@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="images/12.png">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'Css/style.css' %}">
+        <title>NBA Database</title>
+    </head>
+    <body>
+
+        <header>
+            <img src="{% static 'Images/nba.png' %}">
+            <button class="logout button">Log out</button>
+            <h1> DATABASE </h1>
+            
+            
+        </header>
+
+        
+            <nav class="options">
+                <ul>
+                    <li><a href="teams" class="button"> Drużyny</a></li>
+                    <li><a href="players" class="button"> Zawodnicy</a></li>
+                    <li><a href="coach" class="button"> Trenerzy</a></li>
+                    <li><a href="hall" class="button"> Hale</a></li>
+                    <li><a href="stats" class="button"> Statystyki</a></li>
+                    <li><a href="match" class="button"> Mecze</a></li>
+                    <li><a href="table" class="button"> Tabela</a></li>
+                </ul>
+            </nav>
+
+        <main>
+            <section id="content" class="hidden">
+                <!-- Tutaj będzie wyświetlane dynamiczne zawartość w zależności od wybranej opcji -->
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; NBA Database</p> 
+        </footer>
+
+    </body>
+</html>
+

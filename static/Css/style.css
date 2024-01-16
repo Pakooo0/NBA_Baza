@@ -1,0 +1,136 @@
+body, h1, p, img, button {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    height: 100px;
+}
+.home{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 25px;
+    background-color: #333;
+    color: #fff;
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+}
+.logout{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 25px;
+    background-color: #333;
+    color: #fff;
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: darkgrey;
+    background-image: url('../images/background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: 0px;
+    text-align: center;
+    
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 0em;
+    position: relative;
+}
+
+main {
+    padding: 20px;
+}
+
+section.options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.options ul{
+    list-style: none;
+    background-color: #333;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+
+}
+.options a{
+    color: #fff;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    width: 244px;
+}
+.options a:hover{
+    background-color:hsl(0, 0%, 10%);
+}
+.options li{
+    float: left;
+}
+button{
+    background-color: #575656;
+    color: #fff;
+    display: block;
+    height: 40px;
+    width: 150px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.button:hover{
+    background-color: hsl(0, 0%, 10%);
+}
+a{
+    color: #fff;
+    text-decoration: none;
+}
+
+form{
+    font-size: 30px;
+    border: #333 solid ;
+    border-radius: 25px;
+    padding: 10px;
+    display: inline-block;
+    background-color: #757575;
+    text-align: center;
+
+}
+input[type="text"], input[type="date"], select, input[type="reset"], input[type="submit"] {
+    font-size: 20px;
+}
+.add{
+    margin: auto ;
+}
+.listzaw{
+    text-decoration: none;
+    list-style-type: none;
+}
+.accordion-body{
+    text-align: center;
+}
