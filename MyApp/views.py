@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import NBAT, NBAP
-
+from .models import klub, zawodnicy, trener
+from .forms import TrenerForm, HalaForm
 
 # Create your views here.
 def index(request):
@@ -13,30 +13,8 @@ def addplayer(request):
 
 
 def teams(request):
-    T1 = NBAT()
-    T1.id = 0
-    T1.name = 'Chicago Bulls'
+    return render(request, 'teams.html')
 
-    T2 = NBAT()
-    T2.id = 0
-    T2.name = 'Los Angeles Lakers'
-
-    NBATs = [T1, T2]
-    return render(request, 'teams.html', {'TMS': NBATs})
-
-def player(request):
-    P1 = NBAP()
-    P1.id = 0
-    P1.name = 'DeMar DeRozan'
-    P1.club = 'Chicago Bulls'
-
-    P2 = NBAP()
-    P2.id = 1
-    P2.name = 'LeBron James'
-    P2.club = 'Los Angeles Lakers'
-
-    NBAPs = [P1,P2]
-    return render(request, 'players.html',{'PLR': NBAPs})
 
 def players(request):
     return render(request, 'players.html')
@@ -68,3 +46,75 @@ def addteam(request):
 
 def home(request):
     return render(request, 'home.html')
+def addcoach(request):
+    return render(request, 'addcoach.html')
+def addhall(request):
+    return render(request, 'addhall.html')
+
+def add_team(request):
+    if request.method == 'POST':
+        nazwa_druzyny = request.POST['nazwa_druzyny']
+        miasto = request.POST['miasto']
+        konferencja = request.POST['konferencja']
+
+        klub.objects.create(
+            nazwa_druzyny=nazwa_druzyny,
+            miasto=miasto,
+            konferencja=konferencja
+        )
+        return redirect('teams')
+    teams = klub.objects.all()
+    return render(request, 'add_team.html')
+
+
+def add_player(request):
+    teams = klub.objects.all()
+
+    if request.method == 'POST':
+        imie = request.POST['imie']
+        nazwisko = request.POST['nazwisko']
+        narodowosc = request.POST['narodowosc']
+        wzrost = request.POST['wzrost']
+        data_urodzenia = request.POST['data_urodzenia']
+        waga = request.POST['waga']
+        druzyna_id = request.POST['druzyna']
+
+        druzyna = klub.objects.get(id_klub=druzyna_id)
+
+        zawodnicy.objects.create(
+            imie=imie,
+            nazwisko=nazwisko,
+            narodowosc=narodowosc,
+            wzrost=wzrost,
+            data_urodzenia=data_urodzenia,
+            waga=waga,
+            druzyna=druzyna
+        )
+        return redirect('teams')
+
+    return render(request, 'add_player.html', {'teams': teams})
+
+def add_coach(request):
+    kluby = klub.objects.all()  # Pobieranie wszystkich klubów z bazy danych
+    if request.method == 'POST':
+        form = TrenerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Przekierowanie po dodaniu trenera
+    else:
+        form = TrenerForm()
+
+    return render(request, 'addcoach.html', {'form': form, 'kluby': kluby})
+
+
+def add_hall(request):
+    kluby = klub.objects.all()  # Pobieranie wszystkich klubów z bazy danych
+    if request.method == 'POST':
+        form = HalaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')  # Przekierowanie po dodaniu hali
+    else:
+        form = HalaForm()
+
+    return render(request, 'addhall.html', {'form': form, 'kluby': kluby})

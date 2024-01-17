@@ -20,41 +20,43 @@
             
         </header>
         <main>
-            <form class="classadd" action="index.php" method="post">
+            <h2>Dodaj zawodnika</h2>
+            <form class="classadd" action="{% url 'add_player' %}" method="post">
+                {% csrf_token %}
 
-                <label for="PlayerName">Imię:</label>
-                <input type="text" id="PlayerName" placeholder="Imię" required>
-                <br>
-                <br>
-                <label for="PlayerSurname">Nazwisko:</label>
-                <input type="text" id="PlayerSurname" placeholder="Nazwisko" required>
-                <br>
-                <br>
-                <label for="Narodowość">Narodowość:</label>
-                <input type="text" id="Narodowość" placeholder="Narodowość" required>
-                <br>
-                <br>
-                <label for="Height">Wzrost:</label>
-                <input type="text" id="Height" placeholder="Wzrost" required>
-                <br>
-                <br>
-                <label for="Birthday">Data urodzenia:</label>
-                <input type="date" id="Birthday" required>
-                <br>
-                <br>
-                <label for="Weight">Waga:</label>
-                <input type="text" id="Weight" placeholder="Waga"  required>
-                <br>
-                <br>
-                <label for="Drużyna">Drużyna:</label>
-                <select id="Drużyna">
-                    <option value="team1">team1</option>
-                    <option value="team2">team2</option>
-                    <option value="team3">team3</option>
+                <label for="imie">Imię:</label>
+                <input type="text" id="imie" name="imie" placeholder="Imię" required>
+                <br><br>
+
+                <label for="nazwisko">Nazwisko:</label>
+                <input type="text" id="nazwisko" name="nazwisko" placeholder="Nazwisko" required>
+                <br><br>
+
+                <label for="narodowosc">Narodowość:</label>
+                <input type="text" id="narodowosc" name="narodowosc" placeholder="Narodowość" required>
+                <br><br>
+
+                <label for="wzrost">Wzrost:</label>
+                <input type="text" id="wzrost" name="wzrost" placeholder="Wzrost" required>
+                <br><br>
+
+                <label for="data_urodzenia">Data urodzenia:</label>
+                <input type="date" id="data_urodzenia" name="data_urodzenia" required>
+                <br><br>
+
+                <label for="waga">Waga:</label>
+                <input type="text" id="waga" name="waga" placeholder="Waga" required>
+                <br><br>
+
+                <label for="druzyna">Drużyna:</label>
+                <select id="druzyna" name="druzyna">
+                        {% for team in teams %}
+                            <option value="{{ team.id_klub }}">{{ team.nazwa_druzyny }}</option>
+                        {% endfor %}
                 </select>
-                <br>
-                <input type="submit" >
-                <input type="reset" >
+                <br><br>
+
+                <input type="submit" value="Dodaj zawodnika">
             </form>
         </main>
 

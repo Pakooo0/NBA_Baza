@@ -43,10 +43,9 @@
             <div class="accordion" id="chapters">
 
                 <div class="accordion-item">
-                    {% for team in TMS %}
                     <h2 class="accordion-header">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-1" aria-expanded="true" aria-controls="chapter-1">
-                            {{team.name}}
+
                         </button>
                     </h2>
                     <div id="chapter-1" class="accordion-collapse collapse" data-bs-parent="#chapters">
@@ -63,7 +62,6 @@
                                 Miasto
                         </div>
                     </div>
-                    {% endfor %}
                 </div>
 
                 <div class="accordion-item">

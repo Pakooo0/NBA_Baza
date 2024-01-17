@@ -20,31 +20,28 @@
             
         </header>
         <main>
-            <form class="classadd" action="index.php" method="post">
+            <form class="classadd" action="{% url 'add_team' %}" method="post">
+                {% csrf_token %}
 
-                <label for="Teamname">Nazwa Drużyny:</label>
-                <input type="text" id="Teamname" placeholder="Nazwa Drużyny" required>
+                <label for="nazwa_druzyny">Nazwa Drużyny:</label>
+                <input type="text" id="nazwa_druzyny" name="nazwa_druzyny" placeholder="Nazwa Drużyny" required>
                 <br>
                 <br>
-                <label for="City">Miasto:</label>
-                <input type="text" id="City" placeholder="Miasto" required>
+                <label for="miasto">Miasto:</label>
+                <input type="text" id="miasto" name="miasto" placeholder="Miasto" required>
                 <br>
                 <br>
-                <label for="Konferencja">Konferencja:</label>
-                <input type="text" id="Konferencja" placeholder="Konferencja" required>
+                <label for="konferencja">Konferencja:</label>
+                <input type="text" id="konferencja" name="konferencja" placeholder="Konferencja" required>
                 <br>
                 <br>
-                <input type="submit" >
-                <br>
-                <br>
-                <input type="reset">
+                <input type="submit" value="Dodaj Drużynę" >
             </form>
         </main>
 
         <footer>
             <p>&copy; NBA Database</p> 
         </footer>
-
 
     </body>
 </html>
