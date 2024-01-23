@@ -4,7 +4,7 @@ from django.urls import path
 
 import MyApp
 from MyApp import views
-from .views import add_team, add_player, add_coach, add_hall
+from .views import *
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -15,7 +15,6 @@ urlpatterns = [
     path('hall', views.hall, name="hall"),
     path('stats', views.stats, name="stats"),
     path('match', views.match, name="match"),
-    path('table', views.table, name="table"),
     path('addteam', views.addteam, name="addteam"),
     path('home', views.home, name="home"),
     path('add_team', add_team, name='add_team'),
@@ -23,5 +22,7 @@ urlpatterns = [
     path('addcoach', views.addcoach, name='addcoach'),
     path('add_coach', add_coach, name='add_coach'),
     path('addhall',views.addhall, name="addhall"),
-    path('add_hall',add_hall, name="add_hall")
+    path('add_hall',add_hall, name="add_hall"),
+    path('addmatch', views.addmatch, name="addmatch"),
+    path('add_match',add_match, name="add_match")
 ]

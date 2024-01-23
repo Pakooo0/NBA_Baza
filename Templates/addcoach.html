@@ -29,7 +29,7 @@
             <br><br>
 
             <label for="data_urodzenia">Data Urodzenia:</label>
-            <input type="text" id="data_urodzenia" name="data_urodzenia" placeholder="Data Urodzenia" required>
+            <input type="date" id="data_urodzenia" name="data_urodzenia" placeholder="Data Urodzenia" required>
             <br><br>
 
             <label for="narodowosc">Narodowość:</label>
@@ -40,10 +40,10 @@
             <input type="text" id="staz_w_druzynie" name="staz_w_druzynie" placeholder="Staż w Drużynie" required>
 
             <br><br>
-            <label for="klub">Klub:</label>
-            <select id="klub" name="klub" required>
-                {% for klub in kluby %}
-                    <option value="{{ klub.id_klub }}">{{ klub.nazwa_druzyny }}</option>
+            <label for="druzyna">Klub:</label>
+            <select id="druzyna" name="druzyna" required>
+                {% for team in teams %}
+                    <option value="{{ team.id_klub }}">{{ team.nazwa_druzyny }}</option>
                 {% endfor %}
             </select>
             <br><br>

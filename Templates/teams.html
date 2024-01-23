@@ -29,62 +29,57 @@
                     <li><a href="hall" class="button"> Hale</a></li>
                     <li><a href="stats" class="button"> Statystyki</a></li>
                     <li><a href="match" class="button"> Mecze</a></li>
-                    <li><a href="table" class="button"> Tabela</a></li>
                 </ul>
             </nav>
 
         <main>
 
             
-            <a href="addteam" >
-                <button class="add" class="button">Dodaj Drużynę</button>
-                <br>
-            </a>
-            <div class="accordion" id="chapters">
 
+                <button class="add" class="button"><a href="addteam" >Dodaj Drużynę</a></button>
+                <br>
+
+            <div class="accordion" id="chapters">
+                {% for klub in teams %}
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-1" aria-expanded="true" aria-controls="chapter-1">
-
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-{{forloop.counter}}" aria-expanded="true" aria-controls="chapter-{{forloop.counter}}">
+                            {{klub.team.nazwa_druzyny}}
                         </button>
                     </h2>
-                    <div id="chapter-1" class="accordion-collapse collapse" data-bs-parent="#chapters">
+                    <div id="chapter-{{forloop.counter}}" class="accordion-collapse collapse" data-bs-parent="#chapters">
                         <div class="accordion-body">
-                            <ul class="listzaw">
-                                <li>zawodnik1</li>
-                                <li>zawodnik2</li>
-                                <li>zawodnik3</li>
-                            </ul>
-                                Trener
+                            <h4>Zawodnicy</h4>
+                                {% for zawodnik in klub.zawodnicy %}
+                                    {{zawodnik.imie}} {{zawodnik.nazwisko}}<br>
+                                {% endfor %}
+
+                            <h4>Trener</h4>
+                            {% for trenerr in klub.trener %}
+                                    {{trenerr.imie}} {{trenerr.nazwisko}}<br>
+                                {% endfor %}
+
+                            <h4>Nazwa Hali</h4>
+                            {% for hall in klub.hala %}
+                                    {{hall.nazwa_hali}}<br>
+                                {% endfor %}
+
+                            <h4>Miasto</h4>
+                            {{klub.team.miasto}}
                             <br>
-                                Hala
+                            <h4>Konferencja</h4>
+                            {{klub.team.konferencja}}
                             <br>
-                                Miasto
+                            <form action="teams" method="post" class="deletef">
+                                <button type="submit" class="delete" name="usun" value="{{klub.team.id_klub}}" >
+                                    Usuń Klub
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
 
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-2" aria-expanded="true" aria-controls="chapter-2">
-                            Chicago
-                        </button>
-                    </h2>
-                    <div id="chapter-2" class="accordion-collapse collapse" data-bs-parent="#chapters">
-                        <div class="accordion-body">
-                            <ul class="listzaw">
-                                <li>zawodnik1</li>
-                                <li>zawodnik2</li>
-                                <li>zawodnik3</li>
-                            </ul>
-                                Trener
-                            <br>
-                                Hala
-                            <br>
-                                Miasto
-                        </div>
-                    </div>
-            </div>
             </div>
 
         </main>

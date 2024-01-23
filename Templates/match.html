@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="images/12.png">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="{% static 'Css/style.css' %}">
         <title>NBA Database</title>
     </head>
@@ -28,12 +29,51 @@
                     <li><a href="hall" class="button"> Hale</a></li>
                     <li><a href="stats" class="button"> Statystyki</a></li>
                     <li><a href="match" class="button"> Mecze</a></li>
-                    <li><a href="table" class="button"> Tabela</a></li>
                 </ul>
             </nav>
 
         <main>
-            <button class="add" class="button">Dodaj Mecz</button>
+            <button class="add" class="button"><a href="addmatch"> Dodaj Mecz</a></button>
+            <br>
+             <div class="accordion" id="chapters">
+                {% for mecz in mecze %}
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#chapter-{{forloop.counter}}" aria-expanded="true" aria-controls="chapter-{{forloop.counter}}">
+                            {{mecz.gospodarz.nazwa_druzyny}} {{mecz.wynik}} {{mecz.gosc.nazwa_druzyny}}
+                        </button>
+                    </h2>
+                    <div id="chapter-{{forloop.counter}}" class="accordion-collapse collapse" data-bs-parent="#chapters">
+                        <div class="accordion-body">
+                            <form action="match" method="post" class="deletef">
+                                <h2>Statystyki Pierwszej drużyny</h2>
+                                <h4>Zbiórki</h4>
+                                {{mecz.zbiorki_gosp}}
+                                 <br>
+                                <h4>Bloki</h4>
+                                {{mecz.bloki_gosp}}
+                                <br>
+                                <h4>Przechwyty</h4>
+                                {{mecz.przechwyty_gosc}}
+                                <br>
+                                <h2>Statystyki Drugiej drużyny</h2>
+                                <h4>Zbiórki</h4>
+                                {{mecz.zbiorki_gosc}}
+                                 <br>
+                                <h4>Bloki</h4>
+                                {{mecz.bloki_gosc}}
+                                <br>
+                                <h4>Przechwyty</h4>
+                                {{mecz.przechwyty_gosc}}
+                                <br>
+                                <button type="submit" class="delete" name="usun" value="{{mecz.id_mecz}}" >
+                                    Usuń Mecz
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
         </main>
 
         <footer>

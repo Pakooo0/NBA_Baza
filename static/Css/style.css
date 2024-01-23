@@ -88,6 +88,10 @@ footer {
     font-size: 30px;
     width: 244px;
 }
+.options a.button{
+    width:320px
+
+}
 .options a:hover{
     background-color:hsl(0, 0%, 10%);
 }
@@ -111,7 +115,7 @@ a{
     text-decoration: none;
 }
 
-form{
+.classadd{
     font-size: 30px;
     border: #333 solid ;
     border-radius: 25px;
@@ -127,10 +131,24 @@ input[type="text"], input[type="date"], select, input[type="reset"], input[type=
 .add{
     margin: auto ;
 }
-.listzaw{
-    text-decoration: none;
-    list-style-type: none;
-}
 .accordion-body{
     text-align: center;
+}
+.delete{
+    background-color: #800000;
+    color: white;
+    display: inline-block;
+    padding: 10px 20px; /* Dostosuj pola wewnętrzne przycisku */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Dodaj płynność zmiany koloru tła */
+}
+.deletef {
+    font-size: 14px; /* Dostosuj rozmiar tekstu */
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    text-align: center;
+    margin-top: 10px; /* Dodaj odstęp od przycisku */
 }

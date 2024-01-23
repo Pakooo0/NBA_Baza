@@ -32,20 +32,17 @@
             <input type="text" id="miasto" name="miasto" placeholder="Miasto" required>
             <br><br>
 
-            <label for="kod_pocztowy">Kod Pocztowy:</label>
-            <input type="text" id="kod_pocztowy" name="kod_pocztowy" placeholder="Kod Pocztowy" required>
-            <br><br>
 
             <label for="adres">Adres:</label>
             <input type="text" id="adres" name="adres" placeholder="Adres" required>
             <br><br>
 
-            <label for="klub">Klub:</label>
-            <select id="klub" name="klub" required>
-                {% for klub in kluby %}
-                    <option value="{{ klub.id_klub }}">{{ klub.nazwa_druzyny }}</option>
-                {% endfor %}
-            </select>
+                <label for="druzyna">Drużyna:</label>
+                <select id="druzyna" name="druzyna">
+                        {% for team in teams %}
+                            <option value="{{ team.id_klub }}">{{ team.nazwa_druzyny }}</option>
+                        {% endfor %}
+                </select>
             <br><br>
 
             <input type="submit" value="Dodaj Halę">
